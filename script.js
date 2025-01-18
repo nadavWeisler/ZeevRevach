@@ -1,7 +1,7 @@
 const wolvesPath = 'img/wolfs/';
 const othersPath = 'img/others/';
 const wolfImages = [
-    'wolf1.png', 'wolf2.png', 'wolf3.png', 'wolf4.png', 'wolf5.png', 'wolf6.png', 
+    'wolf1.png', 'wolf2.png', 'wolf3.png', 'wolf4.png', 'wolf5.png', 'wolf6.png',
     'wolf7.png', 'wolf8.png', 'wolf9.png', 'wolf10.png', 'wolf11.png', 'wolf12.png', 'wolf13.png'
 ];
 const otherImages = [
@@ -49,7 +49,7 @@ function showErrorMessage(message) {
 function endGame() {
     clearInterval(timerInterval);
     isPaused = true;
-    showErrorMessage(`Game Over! Final Score: ${score}`);
+    showErrorMessage(`המשחק נגמר והניקוד שלך הוא ${score}`);
     startButton.disabled = false; // Re-enable Start Game button
 }
 
