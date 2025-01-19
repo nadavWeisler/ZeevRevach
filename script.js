@@ -22,8 +22,6 @@ const strikesElement = document.getElementById('strikes');
 const timerElement = document.getElementById('timer');
 const errorElement = document.getElementById('error-message');
 const errorSound = new Audio('error.mp3');
-const startButton = document.getElementById('start');
-const pauseButton = document.getElementById('pause');
 const resetButton = document.getElementById('reset');
 
 // Function to get a random image
@@ -131,23 +129,11 @@ function resetGame() {
     clearInterval(timerInterval);
     isPaused = true;
     spacePressed = false;
-    showErrorMessage('Game reset! Click Start Game to play again.');
-}
-
-// Function to start/resume the game
-function startGame() {
-    if (isPaused) {
-        isPaused = false;
-        startButton.disabled = true; // Disable Start Game button during gameplay
-        updateGame(); // Begin or resume the game
-    }
 }
 
 // Initialize the game and button event listeners
 document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', handleKeyPress); // Listen for key presses
     document.addEventListener('keyup', handleKeyRelease); // Listen for key releases
-    startButton.addEventListener('click', startGame);
-    pauseButton.addEventListener('click', () => (isPaused = true)); // Pause button only pauses
     resetButton.addEventListener('click', resetGame);
 });
