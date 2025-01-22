@@ -5,34 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#000000">
+    <link rel="apple-touch-icon" href="img/icon-192x192.png">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <title>זאב רווח</title>
 </head>
 
 <body>
-    <div id="game-container">
-        <h1>זאב רווח</h1>
-        <div>
-            <button id="reset">התחל משחק חדש</button>
+    <div id="game-container" class="game-wrapper">
+        <header class="game-header">
+            <h1 class="game-title">זאב רווח</h1>
+            <img src="img/logo.png" alt="Company Logo" class="company-logo">
+            <div class="game-controls">
+                <button id="reset" class="game-button">התחל משחק חדש</button>
+            </div>
+        </header>
+
+        <div class="game-stats">
+            <div id="panel" class="stats-panel">
+                <p id="score" class="stat-item">ניקוד: 0</p>
+                <p id="timer" class="stat-item timer">5</p>
+                <p id="strikes" class="stat-item">טעויות: 0/3</p>
+            </div>
         </div>
-        <p id="timer">5</p>
-        <p id="score">נקודות: 0</p>
-        <p id="strikes">טעויות: 0/3</p>
-        <p id="error-message"></p>
-        <img id="image" src="img/wolfs/wolf1.png" alt="Game Image">
+
+        <div id="error-container" class="error-container">
+            <p id="error-message" class="error-text"></p>
+        </div>
+
+        <div class="game-display">
+            <img id="image" class="main-image" src="img/wolfs/wolf1.png" alt="Game Image">
+            <img id="space-img" class="space-indicator" src="img/spacebar.png" alt="Space Bar Image">
+        </div>
+
+        <footer class="game-footer">
+            <p class="footer-text">נכתב בהשראת הפודקאסט - טל ותומר קל וחומר</p>
+            <p class="footer-text developer">נכתב ע"י ימפמפוז מחקר ופיתוח</p>
+        </footer>
     </div>
 
     <script src="script.js"></script>
-
-    <footer id="footer-thanks">
-        <p>נכתב בהשראת הפודקאסט - טל ותומר קל וחומר</p>
-    </footer>
-
-    <footer id="footer-developer">
-        <p>נכתב ע"י ימפמפוז מחקר ופיתוח</p>
-    </footer>
-
 </body>
 
 </html>

@@ -23,6 +23,7 @@ const timerElement = document.getElementById('timer');
 const errorElement = document.getElementById('error-message');
 const errorSound = new Audio('error.mp3');
 const resetButton = document.getElementById('reset');
+const spaceButton = document.getElementById('space-img')
 
 // Function to get a random image
 function getRandomImage() {
@@ -37,9 +38,12 @@ function getRandomImage() {
 // Function to show an error message
 function showErrorMessage(message) {
     errorElement.textContent = message;
-    errorElement.style.opacity = 1;
+    const errorContainer = document.getElementById('error-container');
+    errorContainer.style.opacity = 1; // Show the error container
+    errorElement.style.opacity = 1; // Ensure the error text is visible
     setTimeout(() => {
-        errorElement.style.opacity = 0; // Fade out the error
+        errorContainer.style.opacity = 0; // Hide the error container after 2 seconds
+        errorElement.style.opacity = 0; // Hide the error text
     }, 2000);
 }
 
@@ -56,6 +60,9 @@ function updateGame() {
     const randomImage = getRandomImage();
     imageElement.src = randomImage.src;
     imageElement.dataset.isWolf = randomImage.isWolf; // Store whether it's a wolf
+
+    // Show the timer when the game starts
+    timerElement.style.display = 'block';
 
     // Reset the countdown timer
     countdown = 5;
@@ -87,9 +94,9 @@ function updateGame() {
     }, 1000);
 }
 
-// Function to handle key press
-function handleKeyPress(event) {
-    if (event.code === 'Space' && !spacePressed && !isPaused) {
+// Function to handle spacebar action
+function handleSpacebarAction() {
+    if (!spacePressed && !isPaused) {
         // Trigger action on initial Spacebar press
         spacePressed = true;
         clearInterval(timerInterval); // Stop the timer
@@ -101,12 +108,19 @@ function handleKeyPress(event) {
             strikes++;
             strikesElement.textContent = `טעויות: ${strikes}/${maxStrikes}`;
             errorSound.play();
-            showErrorMessage('Incorrect! This was not a wolf!');
+            showErrorMessage('טעות, זה לא זאב!');
             if (strikes >= maxStrikes) {
                 endGame();
                 return;
             }
         }
+    }
+}
+
+// Function to handle key press
+function handleKeyPress(event) {
+    if (event.code === 'Space') {
+        handleSpacebarAction();
     }
 }
 
@@ -127,8 +141,9 @@ function resetGame() {
     strikesElement.textContent = `טעויות: 0/${maxStrikes}`;
     timerElement.textContent = `${countdown}`;
     clearInterval(timerInterval);
-    isPaused = true;
+    isPaused = false;
     spacePressed = false;
+    updateGame(); // Start the game immediately after reset
 }
 
 // Initialize the game and button event listeners
@@ -136,4 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', handleKeyPress); // Listen for key presses
     document.addEventListener('keyup', handleKeyRelease); // Listen for key releases
     resetButton.addEventListener('click', resetGame);
+    spaceButton.addEventListener('click', () => {
+        handleSpacebarAction();
+        handleKeyRelease({ code: 'Space' }); // Simulate key release after click
+    });
 });
