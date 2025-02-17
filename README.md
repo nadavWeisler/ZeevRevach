@@ -19,7 +19,7 @@ In this game, players are presented with a series of animal images and must pres
 
 ## 🌟 Introduction
 
-"Zeev Revah" is a playful game based on the name of the legendary Israeli actor **Zeev Revah**. The game turns this linguistic pun into a fun test of recognition and timing, challenging players to distinguish wolves from other animals quickly.
+"Zeev Revah" is a playful game based on the name of the Israeli actor **Zeev Revah**. The game turns this linguistic pun into a fun test of recognition and timing, challenging players to distinguish wolves from other animals quickly.
 
 Whether you’re familiar with Zeev Revah or not, the game’s simplicity makes it enjoyable for players of all ages.
 
